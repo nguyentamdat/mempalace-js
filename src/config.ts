@@ -10,6 +10,7 @@ import { homedir } from "os";
 
 export const DEFAULT_PALACE_PATH = join(homedir(), ".mempalace", "palace");
 export const DEFAULT_COLLECTION_NAME = "mempalace_drawers";
+export const DEFAULT_CHROMA_URL = process.env.CHROMA_URL ?? "http://localhost:8000";
 
 export const DEFAULT_TOPIC_WINGS = [
   "emotions",
@@ -87,6 +88,12 @@ export class MempalaceConfig {
 
   get hallKeywords(): Record<string, string[]> {
     return (this.fileConfig.hall_keywords as Record<string, string[]>) ?? DEFAULT_HALL_KEYWORDS;
+  }
+
+  get chromaUrl(): string {
+    const envVal = process.env.CHROMA_URL;
+    if (envVal) return envVal;
+    return (this.fileConfig.chroma_url as string) ?? DEFAULT_CHROMA_URL;
   }
 
   init(): string {

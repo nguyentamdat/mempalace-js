@@ -37,7 +37,7 @@ export async function getCollection(
   config: MempalaceConfig = new MempalaceConfig(),
 ): Promise<ChromaCollection | null> {
   try {
-    const client = new ChromaClient({ path: config.palacePath });
+    const client = new ChromaClient({ path: config.chromaUrl });
     return (await client.getCollection({
       name: config.collectionName,
       embeddingFunction: undefined as any,

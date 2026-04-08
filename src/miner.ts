@@ -9,6 +9,7 @@ import {
 import { basename, extname, relative, resolve } from "node:path";
 import { ChromaClient, DefaultEmbeddingFunction, IncludeEnum } from "chromadb";
 import yaml from "js-yaml";
+import { MempalaceConfig } from "./config";
 
 export const READABLE_EXTENSIONS = new Set([
 	".txt",
@@ -291,7 +292,7 @@ export async function getCollection(
 	palacePath: string,
 ): Promise<DrawerCollection> {
 	mkdirSync(palacePath, { recursive: true });
-	const client = new ChromaClient();
+	const client = new ChromaClient({ path: new MempalaceConfig().chromaUrl });
 	return client.getOrCreateCollection({ name: COLLECTION_NAME });
 }
 
@@ -562,7 +563,7 @@ export async function mine(
 export async function status(palacePath: string): Promise<void> {
 	try {
 		mkdirSync(palacePath, { recursive: true });
-    const client = new ChromaClient();
+    const client = new ChromaClient({ path: new MempalaceConfig().chromaUrl });
     const collection = await client.getCollection({
       name: COLLECTION_NAME,
       embeddingFunction: new DefaultEmbeddingFunction(),

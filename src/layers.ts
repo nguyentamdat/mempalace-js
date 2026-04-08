@@ -146,8 +146,8 @@ async function loadDialect(): Promise<DialectLike> {
   return dialectPromise;
 }
 
-async function getCollection(palacePath: string, collectionName: string): Promise<Collection> {
-  const client = new ChromaClient({ path: palacePath });
+async function getCollection(collectionName: string): Promise<Collection> {
+  const client = new ChromaClient({ path: new MempalaceConfig().chromaUrl });
   return await client.getCollection({ name: collectionName } as never);
 }
 
@@ -198,7 +198,7 @@ export class Layer1 {
     let collection: Collection;
 
     try {
-      collection = await getCollection(this.palacePath, this.collectionName);
+      collection = await getCollection(this.collectionName);
     } catch {
       return "## L1 — No palace found. Run: mempalace mine <dir>";
     }
@@ -294,7 +294,7 @@ export class Layer2 {
     let collection: Collection;
 
     try {
-      collection = await getCollection(this.palacePath, this.collectionName);
+      collection = await getCollection(this.collectionName);
     } catch {
       return "No palace found.";
     }
@@ -354,7 +354,7 @@ export class Layer3 {
     let collection: Collection;
 
     try {
-      collection = await getCollection(this.palacePath, this.collectionName);
+      collection = await getCollection(this.collectionName);
     } catch {
       return "No palace found.";
     }
@@ -402,7 +402,7 @@ export class Layer3 {
     let collection: Collection;
 
     try {
-      collection = await getCollection(this.palacePath, this.collectionName);
+      collection = await getCollection(this.collectionName);
     } catch {
       return [];
     }
@@ -499,7 +499,7 @@ export class MemoryStack {
     };
 
     try {
-      const collection = await getCollection(this.palacePath, new MempalaceConfig().collectionName);
+      const collection = await getCollection(new MempalaceConfig().collectionName);
       result.totalDrawers = await collection.count();
     } catch {
       result.totalDrawers = 0;

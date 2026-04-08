@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readdirSync, statSync } from "node:fs";
 import { basename, extname, resolve } from "node:path";
 import { ChromaClient } from "chromadb";
+import { MempalaceConfig } from "./config";
 
 import { extractMemories } from "./general-extractor";
 import { normalize } from "./normalize";
@@ -163,7 +164,7 @@ export function detectConvoRoom(content: string): string {
 
 export async function getCollection(palacePath: string): Promise<DrawerCollection> {
   mkdirSync(palacePath, { recursive: true });
-  const client = new ChromaClient();
+  const client = new ChromaClient({ path: new MempalaceConfig().chromaUrl });
   return client.getOrCreateCollection({ name: COLLECTION_NAME });
 }
 

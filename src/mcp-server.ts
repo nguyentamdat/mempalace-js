@@ -176,7 +176,7 @@ function toDirection(value: unknown): KgDirection {
 
 async function getCollection(create = false): Promise<DrawerCollection | null> {
   try {
-    const client = new ChromaClient();
+    const client = new ChromaClient({ path: config.chromaUrl });
     if (create) {
       return await client.getOrCreateCollection({
         name: config.collectionName,

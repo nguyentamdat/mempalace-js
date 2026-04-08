@@ -38,7 +38,7 @@ function buildWhereFilter(wing?: string, room?: string) {
 async function getDrawerCollection(palacePath: string) {
   const config = new MempalaceConfig();
   const collectionName = config.collectionName;
-  const client = new ChromaClient({ path: palacePath || config.palacePath });
+  const client = new ChromaClient({ path: config.chromaUrl });
   const embeddingFunction = new DefaultEmbeddingFunction();
 
   try {

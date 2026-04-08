@@ -1,5 +1,6 @@
 import { defineCommand } from "citty";
 import { resolvePalacePath } from "../cli";
+import { MempalaceConfig } from "../config";
 
 export default defineCommand({
   meta: { description: "Compress drawers using AAAK Dialect (~30x reduction)" },
@@ -40,7 +41,7 @@ export default defineCommand({
     let client: InstanceType<typeof ChromaClient>;
     let col: Awaited<ReturnType<InstanceType<typeof ChromaClient>["getCollection"]>>;
     try {
-      client = new ChromaClient({ path: palacePath });
+      client = new ChromaClient({ path: new MempalaceConfig().chromaUrl });
       col = await client.getCollection({
         name: "mempalace_drawers",
         embeddingFunction: new DefaultEmbeddingFunction(),
