@@ -1,6 +1,6 @@
 {
   "name": "@nguyentamdat/mempalace",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Give your AI a memory. No API key required.",
   "type": "module",
   "bin": {
