@@ -1,10 +1,11 @@
 {
   "name": "@nguyentamdat/mempalace",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Give your AI a memory. No API key required.",
   "type": "module",
   "bin": {
-    "mempalace": "./src/index.ts"
+    "mempalace": "./src/index.ts",
+    "mempalace-mcp": "./src/mcp-server.ts"
   },
   "scripts": {
     "start": "bun run src/index.ts",
