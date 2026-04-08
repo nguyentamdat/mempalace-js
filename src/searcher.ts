@@ -69,8 +69,8 @@ export async function search({
 
   try {
     const kwargs = {
-      query_texts: [query],
-      n_results: nResults,
+      queryTexts: [query],
+      nResults: nResults,
       include: ["documents", "metadatas", "distances"],
     } as unknown as DrawerQueryParams;
 
@@ -141,8 +141,8 @@ export async function searchMemories({
 
   try {
     const kwargs = {
-      query_texts: [query],
-      n_results: nResults,
+      queryTexts: [query],
+      nResults: nResults,
       include: ["documents", "metadatas", "distances"],
     } as unknown as DrawerQueryParams;
 
