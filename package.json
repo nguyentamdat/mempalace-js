@@ -1,0 +1,36 @@
+{
+  "name": "@nguyentamdat/mempalace",
+  "version": "1.0.0",
+  "description": "Give your AI a memory. No API key required.",
+  "type": "module",
+  "bin": {
+    "mempalace": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "check": "bunx tsc --noEmit",
+    "test": "bun test",
+    "mcp": "bun run src/mcp-server.ts"
+  },
+  "dependencies": {
+    "chromadb": "^1.9.2",
+    "citty": "^0.1.6",
+    "js-yaml": "^4.1.0",
+    "@clack/prompts": "^0.9.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/bun": "latest"
+  },
+  "license": "MIT",
+  "author": "nguyentamdat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyentamdat/mempalace-js"
+  },
+  "files": [
+    "src",
+    "hooks",
+    "README.md"
+  ]
+}
